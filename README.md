@@ -7,7 +7,7 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Buy us a tree][ico-treeware-gifting]][link-treeware-gifting]
 
-An object oriented PHP wrapper for the NFT.Storage API
+An object oriented PHP wrapper for the [NFT.Storage](https://nft.storage) API
 
 ## Install
 
