@@ -10,12 +10,17 @@ use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Common\Plugin\RedirectPlugin;
 use Http\Discovery\Psr17FactoryDiscovery;
 use OwenVoke\NFTStorage\Api\AbstractApi;
+use OwenVoke\NFTStorage\Api\Content;
 use OwenVoke\NFTStorage\Exception\BadMethodCallException;
 use OwenVoke\NFTStorage\Exception\InvalidArgumentException;
 use OwenVoke\NFTStorage\HttpClient\Builder;
 use OwenVoke\NFTStorage\HttpClient\Plugin\Authentication;
 use Psr\Http\Client\ClientInterface;
 
+/**
+ * @method Content content()
+ * @method Content contents()
+ */
 final class Client
 {
     public const AUTH_ACCESS_TOKEN = 'access_token_header';
@@ -46,6 +51,10 @@ final class Client
     public function api(string $name): AbstractApi
     {
         switch ($name) {
+            case 'content':
+            case 'contents':
+                return new Content($this);
+
             default:
                 throw new InvalidArgumentException(sprintf('Undefined api instance called: "%s"', $name));
         }
